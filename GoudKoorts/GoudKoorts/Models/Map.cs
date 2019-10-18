@@ -11,33 +11,11 @@ namespace GoudKoorts.Models
     {
         public List<Switch> Switches { get; private set; } = new List<Switch>();
 
-        public bool[] SwitchesAsBoolArray
-        {
-            get
-            {
-                bool[] _switches = new bool[Switches.Count];
+        public List<SpawnerTrack> Spawners { get; } = new List<SpawnerTrack>();
 
-                for (int i = 0; i < Switches.Count; i++)
-                {
-                    _switches[i] = (Switches[i].Position == 1);
-                }
+        public List<Cart> Carts { get; } = new List<Cart>();
 
-                return _switches;
-            }
-        }
-
-        public void Add(Switch t)
-        {
-            Switches.Add(t);
-        }
-
-
-        public List<SpawnerTrack> Spawners { get; private set; } = new List<SpawnerTrack>();
-
-        public void Add(SpawnerTrack t)
-        {
-            Spawners.Add(t);
-        }
+        public Dock Dock { get; set; }
 
     }
 }

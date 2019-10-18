@@ -9,77 +9,31 @@ namespace GoudKoorts.Models.Builders
 {
     class TrackBuilder
     {
+
         public static (Track Start, Track End) BuildLine(int length)
         {
-            return BuildLine(length, typeof(Track));
-        }
+            Track start = new Track();
 
-        public static (Track Start, Track End) BuildLine(int length, Type type)
-        {
-            if (length == 1)
+            Track prevTrack = start;
+            for (int i = 0; i < length - 2; i++)
             {
-                if (type == typeof(HoldingTrack))
-                {
-                    Track start = new HoldingTrack();
-
-                    return (Start: start, End: start);
-                }
-                else
-                {
-                    Track start = new Track();
-
-                    return (Start: start, End: start);
-                }
-            }
-
-            if (type == typeof(HoldingTrack))
-            {
-                Track start = new HoldingTrack();
-
-                Track prevTrack = start;
-                for (int i = 0; i < length - 2; i++)
-                {
-                    Track newTrack = new HoldingTrack()
-                    {
-                        Prev = prevTrack
-                    };
-
-                    prevTrack.Next = newTrack;
-
-                    prevTrack = newTrack;
-                }
-
-                Track end = new HoldingTrack()
+                Track newTrack = new Track()
                 {
                     Prev = prevTrack
                 };
 
-                return (Start: start, End: end);
+                prevTrack.Next = newTrack;
+
+                prevTrack = newTrack;
             }
-            else
+
+            Track end = new Track()
             {
-                Track start = new Track();
+                Prev = prevTrack
+            };
+            prevTrack.Next = end;
 
-                Track prevTrack = start;
-                for (int i = 0; i < length - 2; i++)
-                {
-                    Track newTrack = new Track()
-                    {
-                        Prev = prevTrack
-                    };
-
-                    prevTrack.Next = newTrack;
-
-                    prevTrack = newTrack;
-                }
-
-                Track end = new Track()
-                {
-                    Prev = prevTrack
-                };
-
-                return (Start: start, End: end);
-            }
+            return (Start: start, End: end);
         }
 
         public static Track[] BuildFromString(string s)
@@ -103,9 +57,13 @@ namespace GoudKoorts.Models.Builders
                 {
                     newTrack = new SpawnerTrack();
                 }
-                else if (s[i].Equals('s'))
+                else if (s[i].Equals('I'))
                 {
-                    newTrack = new Switch();
+                    newTrack = new InputSwitch();
+                }
+                else if (s[i].Equals('U'))
+                {
+                    newTrack = new OutputSwitch();
                 }
                 else
                 {
@@ -122,5 +80,6 @@ namespace GoudKoorts.Models.Builders
 
             return tracks;
         }
+
     }
 }

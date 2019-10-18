@@ -10,101 +10,13 @@ namespace GoudKoorts.Models.Builders
     class MapBuilder
     {
 
-        public static Map Build_old()
-        {
-            Map map = new Map();
-
-            SpawnerTrack spawnerA = new SpawnerTrack();
-            SpawnerTrack spawnerB = new SpawnerTrack();
-            SpawnerTrack spawnerC = new SpawnerTrack();
-
-            Switch switch1 = new Switch();
-            Switch switch2 = new Switch();
-            Switch switch3 = new Switch();
-            Switch switch4 = new Switch();
-            Switch switch5 = new Switch();
-
-            Dock dock = new Dock();
-            var holdingTrack = TrackBuilder.BuildLine(8, typeof(HoldingTrack));
-
-            var trackAto1 = TrackBuilder.BuildLine(3);
-            var trackBto1 = TrackBuilder.BuildLine(3);
-            var trackCto3 = TrackBuilder.BuildLine(1);
-
-            var track1to2 = TrackBuilder.BuildLine(1);
-            var track2to3 = TrackBuilder.BuildLine(2);
-            var track3to4 = TrackBuilder.BuildLine(1);
-            var track4to5 = TrackBuilder.BuildLine(2);
-            var track2to5 = TrackBuilder.BuildLine(5);
-
-            var track4toHolding = TrackBuilder.BuildLine(7);
-            var track5toDock= TrackBuilder.BuildLine(6);
-            var trackDocktoEnd = TrackBuilder.BuildLine(9);
-
-            {
-                spawnerA.Next = trackAto1.Start;
-                spawnerB.Next = trackBto1.Start;
-                spawnerC.Next = trackCto3.Start;
-
-                switch1.PrevTracks[0] = trackAto1.End;
-                switch1.PrevTracks[1] = trackBto1.End;
-                switch1.NextTracks[0] = track1to2.Start;
-
-                switch2.PrevTracks[0] = track1to2.End;
-                switch2.NextTracks[0] = track2to5.Start;
-                switch2.NextTracks[1] = track2to3.Start;
-
-                switch3.PrevTracks[0] = track2to3.End;
-                switch3.PrevTracks[1] = trackCto3.End;
-                switch3.NextTracks[0] = track3to4.Start;
-
-                switch4.PrevTracks[0] = track3to4.End;
-                switch4.NextTracks[0] = track4to5.Start;
-                switch4.NextTracks[1] = track4toHolding.Start;
-
-                switch5.PrevTracks[0] = track2to5.End;
-                switch5.PrevTracks[1] = track4to5.End;
-                switch5.NextTracks[0] = track5toDock.Start;
-
-                holdingTrack.Start.Prev = track4toHolding.End;
-
-                dock.Prev = track5toDock.End;
-                dock.Next = trackDocktoEnd.Start;
-            }
-
-            { // not done at all
-                trackAto1.Start.Prev = spawnerA;
-                trackAto1.End.Next = switch1;
-
-                trackBto1.Start.Prev = spawnerB;
-                trackBto1.End.Next = switch1;
-
-                trackCto3.Start.Prev = spawnerC;
-                trackCto3.End.Next = switch3;
-            }
-
-            {
-                map.Add(spawnerA);
-                map.Add(spawnerB);
-                map.Add(spawnerC);
-
-                map.Add(switch1);
-                map.Add(switch2);
-                map.Add(switch3);
-                map.Add(switch4);
-                map.Add(switch5);
-            }
-
-            return map;
-        }
-
         public static Map Build()
         {
             Map map = new Map();
-
-            // Generate main paths
-            Track[] mainPath1 = TrackBuilder.BuildFromString("o...s.s.....s......d.........");
-            Track[] mainPath2 = TrackBuilder.BuildFromString("o......s.s.......hhhhhhhh");
+            
+            // Generate main paths, there is an image in the 'Presentatie' folder explaining what the 'mainPaths' are.
+            Track[] mainPath1 = TrackBuilder.BuildFromString("o...I.U.....I......d.........");
+            Track[] mainPath2 = TrackBuilder.BuildFromString("o......I.U.......hhhhhhhh");
 
             // Add tracks outside of mainpaths
             SpawnerTrack spawnerB = new SpawnerTrack();
@@ -125,17 +37,26 @@ namespace GoudKoorts.Models.Builders
                 track4to5.End.Next = mainPath1[12];
             }
 
+            // Set switches second in/output
+            mainPath1[4].Prev = trackBto1.End;
+            mainPath1[6].Next = track2to3.Start;
+            mainPath2[7].Prev = track2to3.End;
+            mainPath2[9].Next = track4to5.Start;
+            mainPath1[12].Prev = track4to5.End;
+
             // Insert into map
             {
-                map.Add((SpawnerTrack)mainPath1[0]);
-                map.Add((SpawnerTrack)spawnerB);
-                map.Add((SpawnerTrack)mainPath2[0]);
+                map.Spawners.Add((SpawnerTrack)mainPath1[0]);
+                map.Spawners.Add((SpawnerTrack)spawnerB);
+                map.Spawners.Add((SpawnerTrack)mainPath2[0]);
 
-                map.Add((Switch)mainPath1[4]);
-                map.Add((Switch)mainPath1[6]);
-                map.Add((Switch)mainPath2[7]);
-                map.Add((Switch)mainPath2[9]);
-                map.Add((Switch)mainPath1[12]);
+                map.Switches.Add((Switch)mainPath1[4]);
+                map.Switches.Add((Switch)mainPath1[6]);
+                map.Switches.Add((Switch)mainPath2[7]);
+                map.Switches.Add((Switch)mainPath2[9]);
+                map.Switches.Add((Switch)mainPath1[12]);
+
+                map.Dock = (Dock)mainPath1[19];
             }
 
             return map;

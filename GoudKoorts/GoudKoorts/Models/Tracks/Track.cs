@@ -8,8 +8,12 @@ namespace GoudKoorts.Models.Tracks
 {
     class Track
     {
-        public Track Prev { get; set; }
-        public Track Next { get; set; }
+        public virtual Track Prev { get; set; }
+        public virtual Track Next { get; set; }
+
+        public virtual Cart Cart { get; set;  }
+
+        public bool Occupied { get { return Cart != null; } }
 
     }
 }

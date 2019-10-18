@@ -52,6 +52,8 @@
     <Compile Include="Models\Tracks\Dock.cs" />
     <Compile Include="Models\Tracks\HoldingTrack.cs" />
     <Compile Include="Models\Tracks\SpawnerTrack.cs" />
+    <Compile Include="Models\Tracks\InputSwitch.cs" />
+    <Compile Include="Models\Tracks\OutputSwitch.cs" />
     <Compile Include="Models\Tracks\Switch.cs" />
     <Compile Include="Models\Tracks\Track.cs" />
     <Compile Include="Views\InputView.cs" />

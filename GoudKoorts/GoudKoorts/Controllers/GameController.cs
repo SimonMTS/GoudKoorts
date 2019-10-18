@@ -13,7 +13,7 @@ namespace GoudKoorts.Controllers
     class GameController
     {
         private static System.Timers.Timer GameLoop;
-        private static int timer = 20;
+        private static int timer = 19;
 
         private static Game game;
 
@@ -31,7 +31,7 @@ namespace GoudKoorts.Controllers
 
         private void StartGameLoop()
         {
-            OutputView.DrawMap(timer, game.Switches);
+            OutputView.DrawMap(timer, game.Spawners, game.Score);
 
             GameLoop = new System.Timers.Timer(500);
             GameLoop.Elapsed += Loop;
@@ -42,12 +42,12 @@ namespace GoudKoorts.Controllers
             {
                 int switchToSwap = InputView.AwaitNumber();
 
-                if (switchToSwap > 0 && switchToSwap <= game.Switches.Length)
+                if (switchToSwap > 0 && switchToSwap <= game.Switches.Count)
                 {
-                    game.ChangeSwitchDirection(switchToSwap-1);
+                    game.FlipSwitch(switchToSwap-1);
                 }
 
-                OutputView.DrawMap(timer, game.Switches);
+                OutputView.DrawMap(timer, game.Spawners, game.Score);
             }
         }
 
@@ -60,6 +60,7 @@ namespace GoudKoorts.Controllers
                 timer = 20;
 
                 game.advance();
+                OutputView.DrawMap(timer, game.Spawners, game.Score);
             }
         }
 
