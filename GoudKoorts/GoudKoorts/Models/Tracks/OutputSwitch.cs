@@ -20,7 +20,7 @@ namespace GoudKoorts.Models.Tracks
                 }
                 else
                 {
-                    if (Position == 0)
+                    if (Position == DownPosition)
                     {
                         c = '╗';
                     }

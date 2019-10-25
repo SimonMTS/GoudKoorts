@@ -20,7 +20,7 @@ namespace GoudKoorts.Models.Tracks
                 }
                 else
                 {
-                    if (Position == 0)
+                    if (Position == DownPosition)
                     {
                         c = '╔';
                     }
@@ -62,7 +62,7 @@ namespace GoudKoorts.Models.Tracks
             }
         }
 
-        protected override bool CanReceiveCartFrom(Track t)
+        public override bool CanReceiveCartFrom(Track t)
         {
             return (t == Prev);
         }

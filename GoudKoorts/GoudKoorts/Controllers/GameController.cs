@@ -12,7 +12,9 @@ namespace GoudKoorts.Controllers
 {
     class GameController
     {
-        private static System.Timers.Timer GameLoop;
+        private const int TimeToThink = 10; // in seconds
+
+        private static Timer GameLoop;
         private static int timer = 19;
 
         private static Game game;
@@ -26,14 +28,13 @@ namespace GoudKoorts.Controllers
             OutputView.WelcomeScreen();
 
             StartGameLoop();
-
         }
 
         private void StartGameLoop()
         {
-            OutputView.DrawMap(timer, game.Spawners, game.Score);
+            OutputView.DrawMap(timer, game.Spawners, game.Dock, game.Score);
 
-            GameLoop = new System.Timers.Timer(500);
+            GameLoop = new Timer(TimeToThink * 50);
             GameLoop.Elapsed += Loop;
             GameLoop.AutoReset = true;
             GameLoop.Enabled = true;
@@ -47,7 +48,7 @@ namespace GoudKoorts.Controllers
                     game.FlipSwitch(switchToSwap-1);
                 }
 
-                OutputView.DrawMap(timer, game.Spawners, game.Score);
+                OutputView.DrawMap(timer, game.Spawners, game.Dock, game.Score);
             }
         }
 
@@ -63,13 +64,23 @@ namespace GoudKoorts.Controllers
 
                 if (!game.HasLost())
                 {
-                    OutputView.DrawMap(timer, game.Spawners, game.Score);
+                    OutputView.DrawMap(timer, game.Spawners, game.Dock, game.Score);
+
+                    if (game.Score % 18 == 0)
+                    {
+                        int newTimeToThink = TimeToThink - (game.Score / 18);
+                        if (newTimeToThink < 1) newTimeToThink = 1;
+
+                        GameLoop.Enabled = false;
+                        GameLoop.Interval = newTimeToThink * 50;
+                        GameLoop.Enabled = true;
+                    }
                 }
                 else
                 {
                     GameLoop.Stop();
 
-                    Console.WriteLine("end");
+                    OutputView.GameOverScreen();
                 }
             }
         }

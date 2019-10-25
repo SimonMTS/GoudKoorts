@@ -11,7 +11,7 @@ namespace GoudKoorts.Models
     {
         public char CharValue { get { return (isFull ? 'V' : 'v'); } }
 
-        public Track Position { get; private set; }
+        public Track Position { get; set; }
 
         private bool isFull = true;
 

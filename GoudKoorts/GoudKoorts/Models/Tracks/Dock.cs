@@ -23,8 +23,33 @@ namespace GoudKoorts.Models.Tracks
             set {
                 _cart = value;
 
-                if (value != null) Game.Score++;
+                if (value != null && HasShip)
+                {
+                    Cart.Empty();
+                    Game.Score++;
+                    ShipFill++;
+
+                    if (ShipFill >= 8)
+                    {
+                        ShipFill = 0;
+                        HasShip = false;
+
+                        Game.Score += 10;
+                    }
+                }
             }
         }
+
+
+        public bool HasShip { get; set; } = false;
+
+        public int ShipFill { get; private set; } = 0;
+
+
+        public override bool CanMoveToNext()
+        {
+            return Next.CanReceiveCartFrom(this);
+        }
+
     }
 }

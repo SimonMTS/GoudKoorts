@@ -44,6 +44,14 @@ namespace GoudKoorts.Models.Builders
             mainPath2[9].Next = track4to5.Start;
             mainPath1[12].Prev = track4to5.End;
 
+            // Flip in/output numbers
+            ((Switch)mainPath1[4]).DownPosition = 1;
+            ((Switch)mainPath1[6]).DownPosition = 1;
+            ((Switch)mainPath1[12]).DownPosition = 1;
+
+            // Pre flip switch for ease of testing
+            ((Switch)mainPath2[9]).Flip();
+
             // Insert into map
             {
                 map.Spawners.Add((SpawnerTrack)mainPath1[0]);

@@ -27,6 +27,14 @@ namespace GoudKoorts.Models
             }
         }
 
+        public Dock Dock
+        {
+            get
+            {
+                return map.Dock;
+            }
+        }
+
         public void FlipSwitch(int index)
         {
             map.Switches[index].Flip();
@@ -40,8 +48,10 @@ namespace GoudKoorts.Models
 
         public void Advance()
         {
+            var cartsInGame = map.Carts.Where(c => c.Position != null).ToList();
+
             // Move carts
-            foreach (var cart in map.Carts)
+            foreach (var cart in cartsInGame)
             {
                 cart.Move();
             }
@@ -60,13 +70,21 @@ namespace GoudKoorts.Models
                     firstRound = false;
                 }
             }
+
+            // Spawn ship
+            if (!map.Dock.HasShip && (new Random()).Next(0, 2) == 1)
+            {
+                map.Dock.HasShip = true;
+            }
         }
 
         public bool HasLost()
         {
-            Track[] cartPositions = map.Carts.Select(c => c.Position).Distinct().ToArray();
+            var cartsInGame = map.Carts.Where(c => c.Position != null).ToList();
 
-            return (cartPositions.Length != map.Carts.Count);
+            Track[] cartPositions = cartsInGame.Select(c => c.Position).Distinct().ToArray();
+
+            return (cartPositions.Length != cartsInGame.Count);
         }
 
     }

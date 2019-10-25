@@ -10,9 +10,14 @@ namespace GoudKoorts.Models.Tracks
     {
         public int Position { get; private set; } = 0;
 
+        public int DownPosition { get; set; } = 0;
+
         public void Flip()
         {
-            Position = 1 - Position;
+            if (Cart == null)
+            {
+                Position = 1 - Position;
+            }
         }
     }
 }
