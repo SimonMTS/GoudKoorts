@@ -15,7 +15,7 @@ namespace GoudKoorts.Models.Builders
             Map map = new Map();
             
             // Generate main paths, there is an image in the 'Presentatie' folder explaining what the 'mainPaths' are.
-            Track[] mainPath1 = TrackBuilder.BuildFromString("o...I.U.....I......d..........");
+            Track[] mainPath1 = TrackBuilder.BuildFromString("o...I.U.....I.......d..........");
             Track[] mainPath2 = TrackBuilder.BuildFromString("o......I.U........hhhhhhhhh");
 
             // Add tracks outside of mainpaths
@@ -56,7 +56,7 @@ namespace GoudKoorts.Models.Builders
                 map.Switches.Add((Switch)mainPath2[9]);
                 map.Switches.Add((Switch)mainPath1[12]);
 
-                map.Dock = (Dock)mainPath1[19];
+                map.Dock = (Dock)mainPath1[20];
             }
 
             return map;

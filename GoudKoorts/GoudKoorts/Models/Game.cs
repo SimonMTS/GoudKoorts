@@ -11,6 +11,7 @@ namespace GoudKoorts.Models
     {
         private Map map;
         public int Score = 0;
+        private bool firstRound = true;
 
         public List<SpawnerTrack> Spawners
         { 
@@ -51,11 +52,13 @@ namespace GoudKoorts.Models
 
             foreach (var spawner in map.Spawners)
             {
-                if (spawner.WillSpawn(Score, r.Next(100)))
+                if (spawner.WillSpawn(Score, r.Next(100)) || firstRound)
                 {
                     Cart cart = new Cart(spawner.Next);
                     spawner.Next.Cart = cart;
                     map.Carts.Add(cart);
+
+                    firstRound = false;
                 }
             }
         }
