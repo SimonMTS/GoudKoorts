@@ -22,8 +22,7 @@ namespace GoudKoorts.Models
 
         public List<Switch> Switches
         {
-            get
-            {
+            get {
                 return map.Switches;
             }
         }

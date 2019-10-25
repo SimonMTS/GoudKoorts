@@ -8,7 +8,7 @@ namespace GoudKoorts.Models.Tracks
 {
     class Dock : Track
     {
-        public override char CharValue { get { return 'K'; } }
+        public override char CharValue { get { return (Occupied ? Cart.CharValue : 'K'); } }
 
         public Game Game { get; set; }
 

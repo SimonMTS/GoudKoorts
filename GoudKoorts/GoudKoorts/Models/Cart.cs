@@ -9,7 +9,11 @@ namespace GoudKoorts.Models
 {
     class Cart
     {
+        public char CharValue { get { return (isFull ? 'V' : 'v'); } }
+
         public Track Position { get; private set; }
+
+        private bool isFull = true;
 
         public Cart(Track t)
         {
@@ -23,6 +27,11 @@ namespace GoudKoorts.Models
             Position = Position.Next;
 
             Position.Cart = this;
+        }
+
+        public void Empty()
+        {
+            isFull = false;
         }
 
     }
