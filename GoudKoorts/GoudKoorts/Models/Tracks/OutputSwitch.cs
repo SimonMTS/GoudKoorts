@@ -8,6 +8,32 @@ namespace GoudKoorts.Models.Tracks
 {
     class OutputSwitch : Switch
     {
+        public override char CharValue
+        {
+            get
+            {
+                char c;
+
+                if (Occupied)
+                {
+                    c = Cart.CharValue;
+                }
+                else
+                {
+                    if (Position == 0)
+                    {
+                        c = '╗';
+                    }
+                    else
+                    {
+                        c = '╝';
+                    }
+                }
+
+                return c;
+            }
+        }
+
         public Track[] NextTracks = new Track[2];
 
         public override Track Next

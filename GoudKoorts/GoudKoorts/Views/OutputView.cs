@@ -25,11 +25,11 @@ namespace GoudKoorts.Views
             drawing = true;
             {
                 Console.Clear();
-                Console.WriteLine("-- -- -- " + score + " -- -- --");
+                Console.WriteLine(@"~ ~ ~ ~ ~ ~ ~ ~ ~  "+ score.ToString().PadLeft(3, '0') +"  ~\n~ ~ ~ ~ ~ ~ ~ ~ ~ ▀▀▀▀▀ ~");
 
                 // Good code here
 
-                /* TMP */ thisIsBad_DrawMap1(Spawners); /* TMP */
+                /* TMP */ thisIsBad_DrawMap(Spawners); /* TMP */
 
             }
             drawing = false;
@@ -54,7 +54,7 @@ namespace GoudKoorts.Views
             drawing = false;
         }
 
-        private static void thisIsBad_DrawMap1(List<SpawnerTrack> Spawners)
+        private static void thisIsBad_DrawMap(List<SpawnerTrack> Spawners)
         {
             Track[] vt = new Track[400];
             int index = 100;
@@ -111,18 +111,15 @@ namespace GoudKoorts.Views
                 }
             }
 
-            string output = @"
-~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-~ ~ ~ ~ ~ ~ ~ ~ ~ B B B ~
-%129% %128% %127% %126% %125% %124% %123% %122% %121% %120% %119% %118% %117%
+            string output = @"%129%═%128%═%127%═%126%═%125%═%124%═%123%═%122%═%121%═%120%═%119%═%118%═%117%
                         %116%  
-A %100% %101% %102%   %106% %107% %108% %109% %110%     %115%
-     1%103% %104% %105%2     5%111% %112% %113% %114%
-B %200% %201% %202%   %206% %207%   %309% %310%      
-           3%208% %209% %210%4       
-C %300% %301% %302% %303% %304% %305%   %211% %212% %213% %214%  
+A═%100%═%101%═%102%   %106%═%107%═%108%═%109%═%110%     %115%
+     1%103%═%104%═%105%2     5%111%═%112%═%113%═%114%
+B═%200%═%201%═%202%   %206%═%207%   %309%═%310%      
+           3%208%═%209%═%210%4       
+C %300%═%301%═%302%═%303%═%304%═%305%   %211%═%212%═%213%═%214%  
                       %215%  
-%227% %226% %225% %224% %223% %222% %221% %220% %219% %218% %217% %216%  
+%227%─%226%─%225%─%224%─%223%─%222%─%221%─%220%─%219%═%218%═%217%═%216%  
 ";
 
             while (index >= 0)
@@ -135,69 +132,6 @@ C %300% %301% %302% %303% %304% %305%   %211% %212% %213% %214%
             }
 
             Console.WriteLine(output);
-        }
-
-        private static void thisIsBad_DrawMap(List<SpawnerTrack> Spawners)
-        {
-            Track track = Spawners[0].Next;
-            Console.Write("A");
-            while (track != null)
-            {
-                Console.Write(thisIsBad_GetChar(track));
-
-                track = track.Next;
-            }
-            Console.WriteLine("");
-
-            track = Spawners[1].Next;
-            Console.Write("B");
-            while (track != null)
-            {
-                Console.Write(thisIsBad_GetChar(track));
-
-                track = track.Next;
-            }
-            Console.WriteLine("");
-
-            track = Spawners[2].Next;
-            Console.Write("C");
-            while (track != null)
-            {
-                Console.Write(thisIsBad_GetChar(track));
-
-                track = track.Next;
-            }
-            Console.WriteLine("");
-        }
-
-        private static string thisIsBad_GetChar(Track t)
-        {
-
-            if (t.Occupied)
-            {
-                return "O";
-            }
-            else if (t.GetType() == typeof(Dock))
-            {
-                return "D";
-            }
-            else if (t.GetType() == typeof(InputSwitch) || t.GetType() == typeof(OutputSwitch))
-            {
-                return (((Switch)t).Position == 1 ? "W" : "M");
-            }
-            else if (t.GetType() == typeof(SpawnerTrack))
-            {
-                return "S";
-            }
-            else if (t.GetType() == typeof(HoldingTrack))
-            {
-                return "H";
-            }
-            else
-            {
-                return "-";
-            }
-
         }
 
     }

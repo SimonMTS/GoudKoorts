@@ -22,11 +22,12 @@ namespace GoudKoorts.Models
 
         public void Move()
         {
-            Position.Cart = null;
-
-            Position = Position.Next;
-
-            Position.Cart = this;
+            if (Position.CanMoveToNext())
+            {
+                Position.Cart = null;
+                Position = Position.Next;
+                Position.Cart = this;
+            }
         }
 
         public void Empty()

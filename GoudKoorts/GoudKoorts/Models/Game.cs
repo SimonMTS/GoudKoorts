@@ -38,7 +38,7 @@ namespace GoudKoorts.Models
             map.Dock.Game = this;
         }
 
-        public void advance()
+        public void Advance()
         {
             // Move carts
             foreach (var cart in map.Carts)
@@ -60,6 +60,13 @@ namespace GoudKoorts.Models
                     firstRound = false;
                 }
             }
+        }
+
+        public bool HasLost()
+        {
+            Track[] cartPositions = map.Carts.Select(c => c.Position).Distinct().ToArray();
+
+            return (cartPositions.Length != map.Carts.Count);
         }
 
     }

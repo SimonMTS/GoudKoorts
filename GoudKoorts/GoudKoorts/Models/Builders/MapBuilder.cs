@@ -59,6 +59,31 @@ namespace GoudKoorts.Models.Builders
                 map.Dock = (Dock)mainPath1[20];
             }
 
+            // Add different char values
+            mainPath1[3].DefaultChar = '╗';
+            trackBto1.End.DefaultChar = '╝';
+
+            mainPath1[7].DefaultChar = '╔';
+            track2to3.Start.DefaultChar = '╚';
+
+            track2to3.End.DefaultChar = '╗';
+            mainPath2[6].DefaultChar = '╝';
+
+            track4to5.Start.DefaultChar = '╔';
+            mainPath2[10].DefaultChar = '╚';
+
+            mainPath1[11].DefaultChar = '╗';
+            track4to5.End.DefaultChar = '╝';
+
+            mainPath1[18].DefaultChar = '╗';
+            mainPath1[17].DefaultChar = '║';
+            mainPath1[16].DefaultChar = '║';
+            mainPath1[15].DefaultChar = '╝';
+
+            mainPath2[13].DefaultChar = '╗';
+            mainPath2[14].DefaultChar = '║';
+            mainPath2[15].DefaultChar = '╝';
+
             return map;
         }
 

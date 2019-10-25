@@ -8,6 +8,32 @@ namespace GoudKoorts.Models.Tracks
 {
     class InputSwitch : Switch
     {
+        public override char CharValue
+        {
+            get
+            {
+                char c;
+
+                if (Occupied)
+                {
+                    c = Cart.CharValue;
+                }
+                else
+                {
+                    if (Position == 0)
+                    {
+                        c = '╔';
+                    }
+                    else
+                    {
+                        c = '╚';
+                    }
+                }
+
+                return c;
+            }
+        }
+
         public Track[] PrevTracks = new Track[2];
 
         public override Track Prev {
@@ -34,6 +60,11 @@ namespace GoudKoorts.Models.Tracks
                     PrevTracks[1] = value;
                 }
             }
+        }
+
+        protected override bool CanReceiveCartFrom(Track t)
+        {
+            return (t == Prev);
         }
     }
 }

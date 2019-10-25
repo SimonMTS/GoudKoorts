@@ -38,7 +38,7 @@ namespace GoudKoorts.Controllers
             GameLoop.AutoReset = true;
             GameLoop.Enabled = true;
 
-            while (true)
+            while (GameLoop.Enabled)
             {
                 int switchToSwap = InputView.AwaitNumber();
 
@@ -59,8 +59,18 @@ namespace GoudKoorts.Controllers
             if (timer < 0) {
                 timer = 20;
 
-                game.advance();
-                OutputView.DrawMap(timer, game.Spawners, game.Score);
+                game.Advance();
+
+                if (!game.HasLost())
+                {
+                    OutputView.DrawMap(timer, game.Spawners, game.Score);
+                }
+                else
+                {
+                    GameLoop.Stop();
+
+                    Console.WriteLine("end");
+                }
             }
         }
 
