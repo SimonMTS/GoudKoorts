@@ -8,6 +8,8 @@ namespace GoudKoorts.Models.Tracks
 {
     class Track
     {
+        public virtual char CharValue { get { return (Occupied ? 'V' : '-'); } }
+
         public virtual Track Prev { get; set; }
         public virtual Track Next { get; set; }
 

@@ -8,6 +8,8 @@ namespace GoudKoorts.Models.Tracks
 {
     abstract class Switch : Track
     {
+        public override char CharValue { get { return (Position == 0 ? '<' : '>'); } }
+
         public int Position { get; private set; } = 0;
 
         public void Flip()

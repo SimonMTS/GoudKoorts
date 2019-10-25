@@ -8,5 +8,6 @@ namespace GoudKoorts.Models.Tracks
 {
     class HoldingTrack : Track
     {
+        public override char CharValue { get { return '='; } }
     }
 }

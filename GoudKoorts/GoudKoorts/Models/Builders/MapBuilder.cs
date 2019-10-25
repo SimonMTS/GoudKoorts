@@ -15,8 +15,8 @@ namespace GoudKoorts.Models.Builders
             Map map = new Map();
             
             // Generate main paths, there is an image in the 'Presentatie' folder explaining what the 'mainPaths' are.
-            Track[] mainPath1 = TrackBuilder.BuildFromString("o...I.U.....I......d.........");
-            Track[] mainPath2 = TrackBuilder.BuildFromString("o......I.U.......hhhhhhhh");
+            Track[] mainPath1 = TrackBuilder.BuildFromString("o...I.U.....I......d..........");
+            Track[] mainPath2 = TrackBuilder.BuildFromString("o......I.U........hhhhhhhhh");
 
             // Add tracks outside of mainpaths
             SpawnerTrack spawnerB = new SpawnerTrack();

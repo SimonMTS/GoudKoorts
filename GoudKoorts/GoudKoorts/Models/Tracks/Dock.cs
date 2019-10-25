@@ -8,6 +8,8 @@ namespace GoudKoorts.Models.Tracks
 {
     class Dock : Track
     {
+        public override char CharValue { get { return 'K'; } }
+
         public Game Game { get; set; }
 
         private Cart _cart;
