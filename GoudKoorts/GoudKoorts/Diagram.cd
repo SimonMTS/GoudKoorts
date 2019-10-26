@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GoudKoorts.Controllers.GameController">
+    <Position X="7.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIABAAAAAAAQAgAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Builders.MapBuilder">
+    <Position X="11.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Builders\MapBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Builders.TrackBuilder">
+    <Position X="11.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Builders\TrackBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Cart">
+    <Position X="9.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAIAAAAAgAAIAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Cart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Game">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAIAAAgAAgAAIAAAAAQAAAAAQAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Map">
+    <Position X="5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAgAAAAAIAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.Dock">
+    <Position X="2.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAQEAAAEAAAAAAAAAAAAAAAAgAAEAAAABAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\Dock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.HoldingTrack">
+    <Position X="7.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\HoldingTrack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.InputSwitch">
+    <Position X="9.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAgAAAAAAAAAAAAAAAAEAAEAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\InputSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.OutputSwitch">
+    <Position X="11.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\OutputSwitch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.SpawnerTrack">
+    <Position X="5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Tracks\SpawnerTrack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.Switch">
+    <Position X="10.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAMAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\Switch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Models.Tracks.Track">
+    <Position X="7.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQEAAEAAAgIAAoAAAAAAAAAAAAMAAEABAAAAAAAA=</HashCode>
+      <FileName>Models\Tracks\Track.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Program">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Views.InputView">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoudKoorts.Views.OutputView">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAggAAAAAAAAAABAAAAAAAAgAAAAAABAAA=</HashCode>
+      <FileName>Views\OutputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
